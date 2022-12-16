@@ -1,0 +1,330 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+/* Navbar */
+.navbar-nav li a{
+font-size: 17px;
+
+
+}
+.navbar-brand{
+  letter-spacing: 3px;
+  background-color: pink;
+  color: white;
+ 
+}
+.btn {
+  color: white;
+  background-color: pink;
+}
+
+ /*Annoncement*/
+ .annoncement {
+  height: 60px;
+background-color: pink;
+color: black;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 30px;
+font-weight: 50px;
+
+
+ }
+
+ /* Home */
+ 
+ /* Card */
+.card {
+  transition: all 0.5s ease;
+ 
+}
+.card:hover{
+  transform: scale(1.1);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+.btn {
+ background-color: pink; 
+}
+
+/* product */
+.product img{
+  transition: all 0.5s ease;
+ 
+}
+.product img:hover{
+  transform: scale(1.1);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+ 
+/* Footer */
+.container-footer {
+  background-color: pink;
+}
+
+.left{
+display: flex;
+padding: 20px 0px;
+}
+
+
+
+
+.nav-item{
+  text-decoration: none;
+  list-style: none;
+  padding: 20px;
+}
+.btn-close{
+  background-color: pink;
+}
+.badge{
+  background-color: pink;
+  color: pink;
+}
+
+.footer {
+  background-color: #eddee2;
+}
+h5{
+  margin: 40px;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300);
+
+.fa-facebook {
+  color: #3b5998;
+}
+
+.fa-instagram{
+  color: #5c3d2e;
+}
+
+.fa-linkedin{
+ color: #007fb1;
+}
+
+.fa-googleplus{
+   color:  #d34836;
+}
+  /* @color-facebook:( #3b5998;)   */
+ /* $color-twitter: #00aced;  */
+ /* $color-linkedin: #007fb1;  */
+ /* $color-instagram: #5c3d2e;  */
+ /* $color-github: #4183c4;  */
+ /* $color-codepen: #000;  */
+ /* $color-googleplus: #d34836;  */
+
+@mixin border-radius($args...) {
+  -webkit-border-radius: $args;
+  -moz-border-radius: $args;
+  -ms-border-radius: $args;
+  border-radius: $args;
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+.social {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: Arial, sans-serif;
+}
+
+.social-link {
+  @include border-radius(4px);
+
+  cursor: pointer;
+  padding: 5px;
+  text-decoration: none;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+  background-color: #121212;
+  color: #f9f9f9;
+}
+ :hover { 
+    text-decoration: none;
+  }
+  .fa {
+    font-size: 2em;
+    color: white;
+  }
+  .text {
+    font-size: 0.8em;
+  }
+
+   .facebook:not(:hover), 
+ .facebook.no-hover { 
+     background-color: #3b5998; 
+   } 
+   .twitter:not(:hover),
+  .twitter.no-hover {
+    background-color: pink;
+  }
+  .linkedin:not(:hover), 
+   .linkedin.no-hover {
+    background-color: #007fb1;
+  }
+ .instagram:not(:hover),
+ .instagram.no-hover {
+    background-color: #5c3d2e;
+  }
+  .github:not(:hover),
+  .github.no-hover {
+    background-color: color-github;
+  }
+  .codepen:not(:hover),
+  .codepen.no-hover {
+    background-color: color-codepen;
+  }
+  .google-plus:not(:hover),
+  .google-plus.no-hover {
+    background-color: #d34836;;
+  }
+ 
+
+.anim-out {
+  @include transition(background-color 0.2s ease-in-out);
+}
+   :not(.no-hover):hover .anim-out {
+    transform: scale(0, 0);
+    transition-delay: 0.1s;
+  }
+  :not(:hover) .anim-in,
+  .no-hover .anim-in {
+    transform: scale(0, 0);
+    transition-delay: 0s;
+  } 
+
+
+.anim-out {
+  @include transition(transform 0.2s ease-in-out);
+}
+.anim-in {
+  @include transition(transform 0.1s ease-in-out 0.2s);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.profil{
+ text-align: center;
+}
+.titre{
+  text-align: center;
+}
+
+/* .topbar{
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+} */
+
+.topbarWrapper{
+height: 100%;
+padding: 0px 20px;
+align-items: center;
+display: flex;
+justify-content: space-between;
+}
+
+.topRight{
+  display: flex;
+  align-items: center;
+}
+
+.topbarIconContainer{
+position: relative;
+cursor: pointer;
+margin-right: 10px;
+color: #555;
+}
+
+.topIconBadge{
+width: 15px;
+height: 15px;
+position: absolute;
+top: -5px;
+right: 0px;
+background-color:red;
+color:black;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 10px;
+
+}
+
+.topAvatar{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.widgetSmImg{
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  object-fit: cover;
+}
+
+.container-sidebar{
+display: flex;
+margin-top: 10px;
+}
+
+ .form{
+ width: 50%;
+ text-align: left;
+} 
+
+
+
+.bnt{
+width: 40%;
+}
+
+.td {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  cursor: pointer;
+}
