@@ -15,6 +15,10 @@ import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import UserProfil from './components/UserProfil';
 import Payment from './components/Payment';
+import OrderList from "./components/admin/OrderList"
+import UserList from './components/admin/UserList';
+import AdminRoute from './components/AdminRoute';
+
 //import PrivateRoute from './components/admin/PrivateRoute';
 //import AdminNavbar from './components/admin/AdminNavbar';
 
@@ -22,6 +26,7 @@ import AddProducts from './components/admin/AddProducts';
 import AllProducts from './components/admin/AllProducts';
 import Dashboard from './components/admin/Dashboard';
 import Layout from './components/admin/Layout';
+import Profiluser from './components/admin/Profiluser';
 
 // import Sidebar from './components/buttons/Sidebar';
 // import Pagehome from './components/admin/Pagehome';
@@ -36,7 +41,8 @@ function App() {
     <Annoncement/>
      <Header/>
      <Routes>
-        
+
+    
      <Route path='/' element={<Home/>} />
      <Route path='products' element={<Product/>} />
      <Route path='/api/products/:id' element={<ProductDetail/>} />
@@ -45,20 +51,26 @@ function App() {
      <Route path='/contact' element={<Contact/>} />
      <Route path='/about' element={<About/>} />
      {/* <Route path='/admin' element={<AdminNavbar/>} /> */}
-     <Route path='/Login' element={<Login/>} />
+     <Route path='/ogin' element={<Login/>} />
      <Route path='/signup' element={<Signup/>} />
      <Route path='/profil' element={<UserProfil/>} />
      <Route path='/payment' element={<Payment/>} />
+
      
      <Route path='/dashboard/all-products' element={<AllProducts/>}/>
       <Route path='/dashboard/add-products' element={<AddProducts/>}/>
-      <Route path='/dashboard/add-products' element={<Layout/>}/>
+      <Route path='/layout' element={<Layout/>}/>
+      
+      
+   
+    <Route path='/admin/dashboard' element={<Dashboard/>}/>
+    <Route path="/admin/orderlist"element={<OrderList /> }/>
+    <Route path="/admin/userlist"element={<UserList />}/>
+
+    <Route path="/profiluser"element={<Profiluser />}/>
       
       
      
-    <Route path='/dashboard' element={<Dashboard/>}>
-      
-      </Route>
   </Routes>
      <Footer/>
 

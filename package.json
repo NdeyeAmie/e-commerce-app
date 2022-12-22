@@ -22,7 +22,8 @@
     "rating-star": "^1.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
-    "react-dom": "^18.2.0",
+    "react-google-charts": "^4.0.0",
+    "react-helmet-async": "^1.3.0",
     "react-hook": "^0.0.1",
     "react-icons": "^4.4.0",
     "react-redux": "^8.0.4",
@@ -34,6 +35,7 @@
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.2",
+    "simple-encryptor": "^4.0.0",
     "stars-rating": "^1.1.0",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"

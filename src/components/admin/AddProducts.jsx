@@ -1,105 +1,118 @@
-import React,{ useState} from 'react'
-import { Container, Row,Col, Form, FormGroup } from 'react-bootstrap'
+import React, { useState,useEffect } from 'react'
+import axios from "axios";
 import Dashboard from './Dashboard'
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
+import { NavLink } from 'react-router-dom'
 
 
 
 const AddProducts = () => {
-const [enterTitle, setEnterTitle] = useState("");
-const [enterDescription, setEnterDescription] = useState("");
-const [enterCategory, setEnterCategory] = useState("");
-const [enterPrice, setEnterPrice] = useState("");
-const [EnterProductImg, setEnterProductImg] = useState(null);
-//const [loading, setLoading] = useState(false);
+    const [title, setTitle] = useState("");
+    const [desc, setDesc] = useState("");
+    const [price, setPrice] = useState("");
+    const [imgUrl, setImgUrl] = useState("");
+    const [countInStock, setCountInStock] = useState("");
+    const [rating, setRating] = useState("");
+    const [numReviews, setNumReviews] = useState("");
+   
+
+    const addProduct =  (event) => {
+       
+            event.preventDefault();
+            
+                     const config = {
+                         Headers : {
+                             "Content-Type": "application/json",
+                         },
+                     };
+        
+            axios.post('/api/products/post', { 
+                title,desc,price,imgUrl,countInStock,rating,numReviews },
+                config
+                )
+              .then(response => {
+                console.log(response.data);
+              })
+              .catch(error => {
+                console.error(error);
+              });
+       
+        
+
+        // toast.success("product successfully added!");
 
 
 
-const addProduct = async(e) =>{
-    e.preventDefault()
+    //    console.log(addProduct);
+    };
 
-    const product={
-        title: enterTitle,
-        description: enterDescription,
-        category: enterCategory,
-        price: enterPrice,
-        imgUrl: EnterProductImg
-    }
+    return (
+        <>
+            <Dashboard />
+            <div className='container' p-5>
+            <h4 className='mb-5'>Add Product</h4>
+            <div className='col-md-9'>
+                {imgUrl && <div className='text-center'>
+                    <img
+                        src={URL.createObjectURL(imgUrl)}
+                        alt="product photo" className='img-img-responsive'
+                        height="200px" />
+                </div>}
+                <div className='pt-2'>
+                    {imgUrl ? imgUrl.title : "upload photo"}
+                    <input type="file" title='photo' accept='image/*'
+                        onChange={e => setImgUrl(e.target.files[0])}
+                        required />
+                </div>
+            </div>
+            <form onSubmit={addProduct} className="form-add p-2">
 
-    // const formData = new formData();
-    // formData.apprend('photot' files);
-    // const config = {
-    //     hedaders:{
-    //         'content-type':''
-    //     }
-    // }
-    
-    toast.success("product successfully added!");
-
- 
-
-    console.log(product);
-}
-
-  return (
-    <>
-  <Dashboard/>
-  <section>
-    <Container>
-        <Row>
-            <Col lg="12">
-                <h4 className='mb-5'>Add Product</h4>
-                <Form onSubmit={addProduct}>
-                    <FormGroup className='form_group'>
-                        <span>Product title</span>
-                        <input type="text" className='htmlForm-control w-100' placeholder='Abaya' 
-                        value={enterTitle} onChange={e => setEnterTitle(e.target.value)}
-                        required/>
-                    </FormGroup>
-                    <FormGroup className='form_group'>
-                        <span>Description</span>
-                        <input type="text" className='htmlForm-control w-100' placeholder='Description.....'
-                        value={enterDescription} onChange={e => setEnterDescription(e.target.value)}
-                        required/>
-                    </FormGroup>
-
-                    <div className='d-flex align-items-center 
-                    justify-content-between gap-5'>
-                    <FormGroup className='form_group w-50'>
-                        <span>Price</span>
-                        <input type="number" className='htmlForm-control w-100' placeholder='1000CFA'
-                        value={enterPrice} onChange={e => setEnterPrice(e.target.value)}
-                        required/>
-                    </FormGroup>
-
-                    <FormGroup className='form_group w-50'>
-                        <span>Category</span>
-                        <select className='w-100 p-2' value={enterCategory} onChange={e => setEnterCategory(e.target.value)}>
-                            <option value="Abaya">Abaya</option>
-                            <option value="Sac">Sac</option>
-                            <option value="Chaussure">Chaussure</option>
-                            <option value="Colle">Colle</option>
-                        </select>
-                    </FormGroup>
-                    </div>
-                    <div>
-                    <FormGroup className='form_group'>
-                        <span>Product Image</span>
-                        <input className='htmlForm-control w-100' type="file"
-                        onChange={e=> setEnterProductImg(e.target.files[0])}
-                        required/>
-                    </FormGroup>
-                    </div>
-                    <button className='btn btn-outline' type="submit">Add product</button>
-                </Form>
-            </Col>
-        </Row>
-    </Container>
-  </section>
-  
- 
-    </>
-  )
+                <div className='title'>
+                    <p>Product title</p>
+                    <input type="text" className='htmlForm-control w-50' placeholder=''
+                        value={title} onChange={e => setTitle(e.target.value)}
+                        required />
+                </div>
+                <div className='desc'>
+                    <p>Description</p>
+                    <input type="text" className='htmlForm-control w-50' placeholder='desc.....'
+                        value={desc} onChange={e => setDesc(e.target.value)}
+                        required />
+                </div>
+                <div className='price'>
+                    <p>Price</p>
+                    <input type="number" className='htmlForm-control w-50' placeholder=''
+                        value={price} onChange={e => setPrice(e.target.value)}
+                        required />
+                        </div>
+                        <div className='cate'>
+                    <p>countInStock</p>
+                    <input type="number" className='htmlForm-control w-50' placeholder=''
+                        value={countInStock} onChange={e => setCountInStock(e.target.value)}
+                        required />
+                </div>
+                <div className='rating'>
+                    <p>Rating</p>
+                    <input type="number" className='htmlForm-control w-50' placeholder=''
+                        value={rating} onChange={e => setRating(e.target.value)}
+                        required />
+                </div>
+                <div className='numReviews'>
+                    <p>NumReviews</p>
+                    <input type="number" className='htmlForm-control w-50' placeholder=''
+                        value={numReviews} onChange={e => setNumReviews(e.target.value)}
+                        required />
+                </div>
+                {/* <NavLink to="/dashboard/all-products"> */}
+                <button className='btn btn-outline' type="submit">Add product</button>
+                {/* </NavLink> */}
+            </form>
+            </div>
+        </>
+    )
 }
 
 export default AddProducts
+
+
+
