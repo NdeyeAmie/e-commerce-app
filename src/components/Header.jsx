@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 //import { useNavigate } from 'react-router-dom';
 import { NavDropdown, } from 'react-bootstrap';
 import { logout } from '../redux/actions/userAction';
-//import Signup from './buttons/Signup';
+import Signup from './buttons/Signup';
 
 const Header = () => {
 
@@ -28,42 +28,46 @@ const Header = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid py-2">
+      <nav className="navbar-y navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid py-1">
 
-          <button className="navbar-toggler" type="button"
+          {/* <button className="navbar-toggler" type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
-          </button>
+          </button> */}
           <div className="collapse navbar-collapse"
             id="navbarSupportedContent">
+              <div className="img-logo">
+              <NavLink className="nav-link" aria-current="page"
+                  to="/">
+              <img src="assets/logo.png" className="d-block w-30" alt="logo" height="70px" />
+              </NavLink>
+            </div>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <NavLink className="nav-link" aria-current="page"
                   to="/">Acceuille</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/products">Product</NavLink>
+                <NavLink className="nav-link" to="/products">Produit</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/about">About</NavLink>
+                <NavLink className="nav-link" to="/about">A Propos</NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/contact">Contact</NavLink>
               </li>
 
             </ul>
-            <div className="img-logo">
-              <img src="assets/logo.png" className="d-block w-30" alt="logo" height="70px" />
-            </div>
+            
             {/* <NavLink className="navbar-brand mx-auto fw-bold" 
       to="/">MYASHOP</NavLink> */}
 
              <Login /> 
-            {userInfo ? (
+            {userInfo && userInfo.isAdmin === false ? (
               <NavDropdown title={userInfo.username}>
                 <NavLink className="nav-link" to="/profil">
                   <NavDropdown.Item href="/profil">profil</NavDropdown.Item>
@@ -94,15 +98,18 @@ const Header = () => {
                 <NavLink className="nav-link" to="admin/dashboard">
                   <NavDropdown.Item href="/admin/dashboard">Dashboard</NavDropdown.Item>
                 </NavLink>
-                <NavLink className="nav-link" to="/admin/orderlist">
-                  <NavDropdown.Item href="/admin/orderlist">Orders</NavDropdown.Item>
+                <NavLink className="nav-link" to="/dashboard/all-products">
+                  <NavDropdown.Item href="/dashboard/all-products">Tout les Produit</NavDropdown.Item>
                 </NavLink>
-                <NavLink className="nav-link" to="/admin/userlist">
-                  <NavDropdown.Item href="/admin/userlist">Users</NavDropdown.Item>
+                <NavLink className="nav-link" to="/dashboard/add-products">
+                  <NavDropdown.Item href="/dashboard/add-products">Ajouter Un Produit</NavDropdown.Item>
+                  <NavDropdown.Item onClick={logoutHandler}>
+                  Deconnection
+                </NavDropdown.Item>
                 </NavLink>
               </NavDropdown>
             )}
-            {/* <Signup/> */}
+             <Signup/> 
             <CartBtn />
           </div>
 

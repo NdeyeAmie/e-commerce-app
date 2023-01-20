@@ -1,205 +1,138 @@
-// import React from 'react'
+import React, { useEffect, useReducer } from "react";
+import { useSelector } from "react-redux";
+import Chart from "react-google-charts";
+import axios from "axios";
+import Message from "../Message";
+import Loading from "../Loading";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
 
-// import Fouter from "../Footer"
-// import { Route } from 'react-router-dom'
-
-// import AdminNavbar from './AdminNavbar'
-// import { useNavigate } from 'react-router-dom'
-
-// const Layout = () => {
-//   const navigate = useNavigate()  
-//   return (
-//     <>
-//     {
-//     navigate.pathname.startsWith("/dashboard") ? <AdminNavbar/> :  
-// }
-    
-//       <div>
-//         <Route/>
-//       </div>
-//       <Fouter/>
-//     </>
-//   )
-// }
-
-// export default Layout
-
-
-
-// import './App.css'
-import { useState } from 'react'
-
-function Layout() {
-  const [image, setImage] = useState({ preview: '', data: '' })
-  const [status, setStatus] = useState('')
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    let formData = new FormData()
-    formData.append('file', image.data)
-    const response = await fetch('http://localhost:5000/image', {
-      method: 'POST',
-      body: formData,
-    })
-
-    if (response) setStatus(response.statusText)
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "FETCH_REQUEST":
+      return { ...state, loading: true };
+    case "FETCH_SUCCESS":
+      return {
+        ...state,
+        summary: action.payload,
+        loading: false,
+      };
+    case "FETCH_FAIL":
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
   }
+};
+export default function Dashboard() {
+  const [{ loading, summary, error }, dispatch] = useReducer(reducer, {
+    loading: true,
+    error: "",
+  });
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
-  const handleFileChange = (e) => {
-    const img = {
-      preview: URL.createObjectURL(e.target.files[0]),
-      data: e.target.files[0],
-    }
-    setImage(img)
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get("/api/orders/summary", {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        });
+        dispatch({ type: "FETCH_SUCCESS", payload: data });
+      } catch (err) {
+        dispatch({
+          type: "FETCH_FAIL",
+          payload: Message(err),
+        });
+      }
+    };
+    fetchData();
+  }, [userInfo]);
 
   return (
-    <div className='App'>
-      <h1>Upload to server</h1>
-      {image.preview && <img src={image.preview} width='100' height='100' />}
-      <hr></hr>
-      <form onSubmit={handleSubmit}>
-        <input type='file' name='file' onChange={handleFileChange}></input>
-        <button type='submit'>Submit</button>
-      </form>
-      {status && <h4>{status}</h4>}
+    <div>
+      <h1>Dashboard</h1>
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <Message variant="danger">{error}</Message>
+      ) : (
+        <>
+          <Row>
+            <Col md={4}>
+              <Card>
+                <Card.Body>
+                  <Card.Title>
+                    {summary.users && summary.users[0]
+                      ? summary.users[0].numUsers
+                      : 0}
+                  </Card.Title>
+                  <Card.Text> Users</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col md={4}>
+              <Card>
+                <Card.Body>
+                  <Card.Title>
+                    {summary.orders && summary.users[0]
+                      ? summary.orders[0].numOrders
+                      : 0}
+                  </Card.Title>
+                  <Card.Text> Orders</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col md={4}>
+              <Card>
+                <Card.Body>
+                  <Card.Title>
+                    {summary.orders && summary.users[0]
+                      ? summary.orders[0].totalSales.toFixed(2)
+                      : 0}{" "}
+                    CFA
+                  </Card.Title>
+                  <Card.Text> Orders</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+          {/* <div className="my-3">
+            <h2>Sales</h2>
+            {summary.dailyOrders.length === 0 ? (
+              <Message>No Sale</Message>
+            ) : (
+              <Chart
+                width="100%"
+                height="400px"
+                chartType="AreaChart"
+                loader={<div>Loading Chart...</div>}
+                data={[
+                  ['Date', 'Sales'],
+                  ...summary.dailyOrders.map((x) => [x._id, x.sales]),
+                ]}
+              ></Chart>
+            )}
+          </div>
+          <div className="my-3"> */}
+          {/* <h2>Categories</h2>
+          {summary.productCategories.length === 0 ? (
+            <Message>No Category</Message>
+          ) : (
+            <Chart
+              width="100%"
+              height="400px"
+              chartType="PieChart"
+              loader={<div>Loading Chart...</div>}
+              data={[
+                ['Category', 'Products'],
+                ...summary.productCategories.map((x) => [x._id, x.count]),
+              ]}
+            ></Chart>
+          )} */}
+          {/* </div> */}
+        </>
+      )}
     </div>
-  )
+  );
 }
-
-export default Layout
-
-
-// import React, { useState } from 'react';
-// import axios from 'axios';
-
-// function ProductForm() {
-//   const [name, setName] = useState('');
-//   const [description, setDescription] = useState('');
-//   const [price, setPrice] = useState('');
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-
-//     axios.post('/api/products/post', { name, description, price })
-//       .then(response => {
-//         console.log(response.data);
-//       })
-//       .catch(error => {
-//         console.error(error);
-//       });
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <label>
-//         Name:
-//         <input type="text" value={name} onChange={event => setName(event.target.value)} />
-//       </label>
-//       <br />
-//       <label>
-//         Description:
-//         <input type="text" value={description} onChange={event => setDescription(event.target.value)} />
-//       </label>
-//       <br />
-//       <label>
-//         Price:
-//         <input type="text" value={price} onChange={event => setPrice(event.target.value)} />
-//       </label>
-//       <br />
-//       <button type="submit">Create Product</button>
-//     </form>
-//   );
-// }
-
-// export default ProductForm;
-
-
-
-
-
-// import React,{useState} from 'react'
-// import "./Layout.css"
-
-// const Layout = () => {
-//   const [selectedImages, setSelectedImages] = useState([]);
-
-//   const onSelectFile = (event) => {
-//     const selectedFiles = event.target.files;
-//     const selectedFilesArray = Array.from(selectedFiles);
-
-//     const imagesArray = selectedFilesArray.map((file) => {
-//       return URL.createObjectURL(file);
-//     });
-
-//     setSelectedImages((previousImages) => previousImages.concat(imagesArray));
-
-//     // FOR BUG IN CHROME
-//     event.target.value = "";
-//   };
-
-//   function deleteHandler(image) {
-//     setSelectedImages(selectedImages.filter((e) => e !== image));
-//     URL.revokeObjectURL(image);
-//   }
-
-//   return (
-//     <section>
-//       <label>
-//         + Add Images
-//         <br />
-//         <span>up to 10 images</span>
-//         <input
-//           type="file"
-//           name="images"
-//           onChange={onSelectFile}
-//           multiple
-//           accept="image/png , image/jpeg, image/webp"
-//         />
-//       </label>
-//       <br />
-
-//       <input type="file" multiple />
-
-//       {selectedImages.length > 0 &&
-//         (selectedImages.length > 10 ? (
-//           <p className="error">
-//             You can't upload more than 10 images! <br />
-//             <span>
-//               please delete <b> {selectedImages.length - 10} </b> of them{" "}
-//             </span>
-//           </p>
-//         ) : (
-//           <button
-//             className="upload-btn"
-//             onClick={() => {
-//               console.log(selectedImages);
-//             }}
-//           >
-//             UPLOAD {selectedImages.length} IMAGE
-//             {selectedImages.length === 1 ? "" : "S"}
-//           </button>
-//         ))}
-
-//       <div className="images">
-//         {selectedImages &&
-//           selectedImages.map((image, index) => {
-//             return (
-//               <div key={image} className="image">
-//                 <img src={image} height="200" alt="upload" />
-//                 <p>title</p>
-//                 <button onClick={() => deleteHandler(image)}>
-//                   delete image
-//                 </button>
-//                 <p>{index + 1}</p>
-//               </div>
-//             );
-//           })}
-//       </div>
-//     </section>
-   
-//   )
-// }
-
-// export default Layout
-
-

@@ -14,6 +14,10 @@ code {
 
 
 /* Navbar */
+
+.navbar {
+  background-color: #d34836;
+}
 .navbar-nav li a{
 font-size: 17px;
 
@@ -323,10 +327,33 @@ width: 40%;
 }
 
 .td {
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
   border-radius: 50px;
   cursor: pointer;
+}
+
+/* th {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  cursor: pointer;
+} */
+
+.product-list {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.product-list ul li {
+  display: inline-block;
+  width: 120px;
+  /* border: 1px solid pink; */
+  padding: 5px;
+}
+
+.product-list ul{
+  margin: 0px;
 }
 
 

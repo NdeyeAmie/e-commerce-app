@@ -5,6 +5,9 @@ import rootReducers from "./reducers";
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')):null
 
+const productInfoFromStorage = localStorage.getItem('productInfo') 
+? JSON.parse(localStorage.getItem('productInfo')):[];
+
 const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
@@ -20,7 +23,8 @@ const initialState = {
         cartItems: cartItemsFromStorage,
         spippingAddress:shippingAddressFromStorage,
     },    
-    userLogin : {userInfo:userInfoFromStorage}
+    userLogin : {userInfo:userInfoFromStorage},
+    productadd : {producInfo:productInfoFromStorage}
 };
 const middleware =[thunk]
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import index from "../redux/reducers/index"

@@ -1,46 +1,65 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Loading from '../Loading';
-import Message from '../Message';
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable jsx-a11y/img-redundant-alt */
+import React, { useEffect, useState } from "react";
 import Dashboard from "./Dashboard";
 import { toast } from "react-toastify";
-import { NavLink } from "react-router-dom";
-import { productAdd } from "../../redux/actions/productAction";
+import { useNavigate, NavLink, useParams } from "react-router-dom";
 
-const AddProducts = () => {
+
+const UpdateProduct = () => {
   const [title, setTitle] = useState("");
-  const [img, setImg] = useState("");
+//   const [img, setImg] = useState("");
   const [desc, setDesc] = useState("");
   const [price, setPrice] = useState("");
   const [countInStock, setCountInStock] = useState("");
   const [rating, setRating] = useState("");
   const [numReviews, setNumReviews] = useState("");
   // eslint-disable-next-line no-unused-vars
-  const [message, setMessage] = useState("");
+const params = useParams();
+const navigate = useNavigate();
 
-  const dispatch = useDispatch();
-  const productadd = useSelector((state) => state.productadd);
-  const {error, loading,productInfo} = productadd;
+  useEffect(()=>{
+    getProductDetails();
+  }, []);
 
-  const addProduct = (e) => {
-    e.preventDefault();
-    //dispatch
+ const getProductDetails = async () =>{
+    console.warn(params);
+    let result = await fetch (`http://localhost:5000/api/products/${params.id}`);
+    result = await result.json();
+    // console.warn(result);
+    setTitle(result.title);
+    setDesc(result.desc);
+    setPrice(result.price);
+    setCountInStock(result.countInStock);
+    setRating(result.rating);
+    setNumReviews(result.numReviews);
     
-    dispatch(productAdd(title,img, desc, price, countInStock, rating, numReviews));
-      
+ }
+
+  const updateProduct = async () => {
+     console.warn(title, desc, price, countInStock, rating, numReviews);
+    let result = await fetch(`http://localhost:5000/api/products/${params.id}`,{
+     method: 'Put',
+     body:JSON.stringify({title, desc, price, countInStock, rating, numReviews}),
+     headers : {
+        "Content-Type":"Application/json"
+     } 
+    });
+    result = await result.json();
+   if(result) {
+    navigate('/dashboard/all-products')
+   } 
   };
 
-  //toast.success("product successfully added!");
+//   toast.success("product successfully added!");
 
   return (
     <>
     <Dashboard/>
       <div className="container" p-5>
-        <h4 className="mb-5">Add Product</h4>
-        {error && <Message variant="danger">{error}</Message>}
-              {loading && <Loading />}
-              {message && <Message variant="danger">{message}</Message>}
-        <form onSubmit={addProduct} className="form-add p-2">
+        <h4 className="mb-5">UpdateProduct</h4>
+        <form onSubmit={updateProduct} className="form-add p-2">
           <div className="title">
             <p>Product title</p>
             <input
@@ -52,7 +71,7 @@ const AddProducts = () => {
               required
             />
           </div>
-         <div className='col-md-9'>
+         {/* <div className='col-md-9'>
                  {img  && <div className='text-center'>
                      <img
                          src={URL.createObjectURL(img)}
@@ -65,7 +84,7 @@ const AddProducts = () => {
                          onChange={e => setImg(e.target.files[0])}
                          required />
                  </div>
-             </div>
+             </div> */}
               
 
           <div className="desc">
@@ -125,7 +144,7 @@ const AddProducts = () => {
           </div>
            {/* <NavLink to="/dashboard/all-products">  */}
           <button className="btn btn-outline" type="submit">
-            Add product
+           Update
           </button>
            {/* </NavLink>  */}
         </form>
@@ -134,15 +153,4 @@ const AddProducts = () => {
   );
 };
 
-export default AddProducts;
-
-// <input type="file" name="file" id="file_up"
-// onChange={e => setImg(e.target.files[0])} />
-// {
-//     loading ? <div id="file_img"></div>
-
-//     :<div id="file_img" >
-//         <img src={img ? img.url : ''} alt="" />
-//         {/* <span onClick={handleSup}>X</span> */}
-//     </div>
-// }
+export default UpdateProduct;

@@ -41,7 +41,7 @@ useEffect(() =>{
                         </div>
                     </div>
                     </div>
-                    <div className='wizard pt-3'>
+                    {/* <div className='wizard pt-3'>
                         <div className='d-flex align-items-start'>
                             <div clas="nav align-items-start flex-column col-12 nav-pills me-3" 
                             id="v-pills-tab"
@@ -66,7 +66,7 @@ useEffect(() =>{
                            </button>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div class='tab-content col-lg-8 pb-5 pt-lg-0 pt-3'
                 id='v-pills-tabContent'

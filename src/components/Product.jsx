@@ -42,7 +42,7 @@ import Header from "./Header"
        <div className='container py-5'>
          <div className='row'>
            <div className='col-12 text-center'>
-             <h1>product</h1>
+             <h1>Produit</h1>
              <hr />
            </div>
          </div>

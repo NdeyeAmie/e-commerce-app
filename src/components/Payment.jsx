@@ -19,7 +19,7 @@ const Payment = () => {
         const submitHandler = (e) => {
           e.preventDefault();
           dispatch(savePaymentMethod(paymentMethod));
-         navigate("/placeorder");
+         navigate("/");
         };
         return (
           <>
@@ -31,7 +31,15 @@ const Payment = () => {
                 <Col>
                   <Form.Check
                     type="radio"
-                    label="Livraison ou Carte Credit"
+                    label=" Carte Credit"
+                    id="livraison"
+                    name="paymentMethod"
+                    value="livraison"
+                    onChange={(e) => setPaymentMethod(e.target.value)}
+                  ></Form.Check>
+                  <Form.Check
+                    type="radio"
+                    label="Livraison "
                     id="livraison"
                     name="paymentMethod"
                     value="livraison"

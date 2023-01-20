@@ -16,8 +16,9 @@ import Checkout from './components/Checkout';
 import UserProfil from './components/UserProfil';
 import Payment from './components/Payment';
 import OrderList from "./components/admin/OrderList"
-import UserList from './components/admin/UserList';
 import AdminRoute from './components/AdminRoute';
+import Rapp from './components/adminUsers/Rapp';
+import UpdateProduct from './components/admin/UpdateProduct';
 
 //import PrivateRoute from './components/admin/PrivateRoute';
 //import AdminNavbar from './components/admin/AdminNavbar';
@@ -42,8 +43,9 @@ function App() {
      <Header/>
      <Routes>
 
-    
+     
      <Route path='/' element={<Home/>} />
+     <Route path='/posts' element={<Rapp/>} />
      <Route path='products' element={<Product/>} />
      <Route path='/api/products/:id' element={<ProductDetail/>} />
      <Route path='/cart/' element={<Cart/>} />
@@ -59,13 +61,14 @@ function App() {
      
      <Route path='/dashboard/all-products' element={<AllProducts/>}/>
       <Route path='/dashboard/add-products' element={<AddProducts/>}/>
+      <Route path='/update/:id' element={<UpdateProduct/>} />
       <Route path='/layout' element={<Layout/>}/>
       
       
    
     <Route path='/admin/dashboard' element={<Dashboard/>}/>
-    <Route path="/admin/orderlist"element={<OrderList /> }/>
-    <Route path="/admin/userlist"element={<UserList />}/>
+    {/* <Route path="/admin/orderlist"element={<OrderList /> }/>
+    <Route path="/admin/userlist"element={<UserList />}/> */}
 
     <Route path="/profiluser"element={<Profiluser />}/>
       
