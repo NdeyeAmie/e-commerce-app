@@ -18,7 +18,7 @@ import Header from "./Header"
     // console.log(item);
     <Header/>
      return (
-       <div className="card my-5 py-4" key={item._id} style={{ width: "18rem", margin: "40px" }}>
+       <div className="card my-5 py-4" key={item._id} style={{ width: "18rem", margin: "15px" }}>
          <img src={item.img} className="card-img-top" alt={item.title} />
          <div className="card-body text-center">
            <h5 className="card-title">{item.title}</h5>
@@ -39,7 +39,7 @@ import Header from "./Header"
    return (
      <div>
       
-       <div className='container py-5'>
+       <div className='container py-5 m-5'>
          <div className='row'>
            <div className='col-12 text-center'>
              <h1>Produit</h1>

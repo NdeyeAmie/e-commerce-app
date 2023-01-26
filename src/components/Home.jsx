@@ -4,7 +4,7 @@ import Product from './Product'
 const Home = () => {
   return (
   
-    <div>
+    <div className=' my-5 py-4'>
       
      <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-indicators">

@@ -1,6 +1,6 @@
 export const addItem = (thisProduct) => {
     return  {
-        type: "ADD_ITEM",
+        type: "ADDITEM",
         payload : thisProduct
     }
     

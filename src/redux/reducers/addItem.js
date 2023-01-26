@@ -3,7 +3,7 @@
 
  const addItems = (state = addItem, action) => {
       switch (action.type) {
-         case "ADD_ITEM" : return[
+         case "ADDITEM" : return[
              ...state,
              action.payload
          ]

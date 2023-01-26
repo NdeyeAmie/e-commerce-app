@@ -8,17 +8,18 @@
  const Cart = () => {
      const state = useSelector((state) => state.addItem)
      const dispatch = useDispatch()
+
      const handleClose = (item) => {
          dispatch(delItem(item))
      }
 
      const cartItems = (cartItem) => {
          return (
-             <div className='px-4 my-5 bg-light rounded-3' key={cartItem.id}>
+             <div className='px-4 py-5 my-5 rounded-5' key={cartItem.id}>
                  <div className='containern py-4'>
-                     <button onClick={() => handleClose(cartItem)} className='btn-close 
+                     <button onClick={()=>handleClose(cartItem)} className='btn-close 
                   float-end' aria-label='Close'></button>
-                     <div className='row justify-content-centent'>
+                     <div className='row justify-content-center'>
                          <div className='col-md-4'>
                              <img src={cartItem.img} alt={cartItem.title} height="200px"
                                  width="180px" />
@@ -37,7 +38,7 @@
      const emptycart = () => {
          return (
              <div className='px-4 my-5 bg-light rounded-3 py-5'>
-                 <div className='containern py-4'>
+                 <div className='container py-4'>
                      <div className='row'>
                          <h3>MERCI! de remplire votre panier</h3>
                      </div>
@@ -48,7 +49,7 @@
 
      const button = () => {
          return (
-             <div className='containern '>
+             <div className='container'>
                  <div className='row'>
                      <NavLink to="/checkout" className="btn bnt outline-secondary mb-5
              w-25 mx-auto"> Passer à la caisse</NavLink>

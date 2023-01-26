@@ -4,7 +4,7 @@ import Newsletter from "./Newsletter";
 
 const Container = styled.div`
 display: flex;
-background-color:;
+background-color:pink;
 `;
 const Left = styled.div`
  flex: 1;

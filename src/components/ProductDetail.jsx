@@ -82,8 +82,8 @@ import Message from "./Message";
 import Rating from "./Rating";
 
 const ProductDetail = () => {
-  const [cartBtn] = useState("Add to Cart");
-  const [setCartBtn] = useState("remove to cart");
+  const [cartBtn, setCartBtn] = useState("Add to Cart");
+  // const [setCartBtn] = useState("remove to cart");
   const [qty, setQty] = useState(1);
   const navigate = useNavigate();
   const { id } = useParams();
@@ -91,7 +91,7 @@ const ProductDetail = () => {
   //    //const thisProduct = products.find((prod) => prod.id === id);
   //  //
   const [thisProduct, setProduct] = useState({});
-  console.log(thisProduct);
+  //console.log(thisProduct);
   useEffect(() => {
     const fetchProduct = async () => {
       const { data } = await axios.get(`/api/products/${id}`);
@@ -107,7 +107,7 @@ const ProductDetail = () => {
     if (cartBtn === "Add to Cart") {
       dispatch(addItem(thisProduct, qty));
       navigate(`/cart/${thisProduct}?qty=${qty} `);
-      setCartBtn("Remove from Cart");
+      // setCartBtn("Remove from Cart");
     } else {
       dispatch(delItem(thisProduct, qty));
       setCartBtn("Add to Cart");
@@ -116,14 +116,14 @@ const ProductDetail = () => {
 
   return (
     <>
-      <div className="container single-product">
+      <div className="container single-product py-5 m-5">
         {loading ? (
           <Loading />
         ) : error ? (
           <Message variant="alert-danger">{error}</Message>
         ) : (
           <>
-            <div className="row">
+            <div className="row ">
               <div className="col-md-6">
                 <div className="single-image">
                   <img src={thisProduct.img} alt={thisProduct.title} />
