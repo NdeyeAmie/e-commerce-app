@@ -12,3 +12,18 @@ export const delItem = (thisProduct) => {
     }
    
 }
+
+// export const addCart = (thisProduct) => {
+//     return  {
+//         type: "ADDITEM",
+//         payload : thisProduct
+//     }
+    
+// }
+// export const delCart = (thisProduct) => {
+//     return {
+//         type: "DELITEM",
+//         payload : thisProduct
+//     }
+   
+// }

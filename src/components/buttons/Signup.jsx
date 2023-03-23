@@ -80,9 +80,7 @@ const Signup = () => {
         data-bs-target="#signupModal"
       >
         <span className="fa fa-user-plus me-1"></span>S'inscrire
-
       </button>
-
       <div
         className="modal fade"
         id="signupModal"

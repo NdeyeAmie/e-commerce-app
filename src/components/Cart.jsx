@@ -15,7 +15,7 @@
 
      const cartItems = (cartItem) => {
          return (
-             <div className='px-4 py-5 my-5 rounded-5' key={cartItem.id}>
+             <div className='px-4 py-5 my-5 rounded-5' key={cartItem._id}>
                  <div className='containern py-4'>
                      <button onClick={()=>handleClose(cartItem)} className='btn-close 
                   float-end' aria-label='Close'></button>

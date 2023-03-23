@@ -154,8 +154,8 @@ const ProductDetail = () => {
                     <div className="flex-box d-flex justify-content-between align-items-">
                       <h6>Reviews</h6>
                       <Rating
-                        value={thisProduct.rating}
-                        text={`${thisProduct.numReviews} reviews`}
+                        rating={thisProduct.rating}
+                        numReviews={`${thisProduct.numReviews} reviews`}
                       />
                     </div>
                     <hr />
@@ -170,7 +170,7 @@ const ProductDetail = () => {
                           >
                             {[...Array(thisProduct.countInStock).keys()].map(
                               (x) => (
-                                <option keys={x + 1} value={x + 1}>
+                                <option key={x + 1} value={x + 1}>
                                   {x + 1}
                                 </option>
                               )

@@ -12,45 +12,16 @@ code {
     monospace;
 }
 
+
 /* Navbar */
-   /*.collapse:not(.show) {
-    display: flex;
-} 
-
-.me-auto {
-  margin-right: auto!important;
-  display: flex;
-  justify-content: space-between;
-}  */
-
-.navbar{
-  position: fixed;
-  width: 100%;
-}
-
-/* .logo{
-  margin-left: 40px;
-} */
-
-.aa{
-  text-decoration: none;
-  color: white;
-} 
-.aa:hover{
-  color:black ;
-}
-
-/* .navbar-nav li a{
-font-size: 17px;
-
-
+.navbar-nav li a{
+  font-size: 17px;
 }
 .navbar-brand{
   letter-spacing: 3px;
-  background-color: pink;
-  color: white;
- 
-} */
+}
+
+
 .btn {
   color: white;
   background-color: pink;
@@ -109,7 +80,9 @@ padding: 20px 0px;
 }
 
 
-
+.rating span {
+  color: #ffc000;
+}
 
 .nav-item{
   text-decoration: none;

@@ -1,8 +1,8 @@
  import React, {useState, useEffect} from 'react'
  import axios from "axios"
  import { NavLink } from 'react-router-dom';
-import Rating from './Rating';
 import Header from "./Header"
+import Rating from './Rating';
  //import products from '../Data'
 
  const Product = () => {
@@ -23,9 +23,9 @@ import Header from "./Header"
          <div className="card-body text-center">
            <h5 className="card-title">{item.title}</h5>
            <div className='rating'>
-            <Rating 
-            value={item.rating}
-            text={`${item.numReviews} reviews`}
+            < Rating 
+           rating={item.rating}
+            numReviews={`${item.numReviews} reviews`}
             />
            <p className='lead'> {item.price}FCA</p>
            <NavLink to={`/api/products/${item._id}`} className="btn 

@@ -5,66 +5,72 @@
 //  export default function HalfRating() {
 //    return (
 //      <Stack spacing={1}>
-//        <Rating name="half-rating" defaultValue={4 }   />
+//        <Rating name="half-rating" defaultrating={4 }   />
 //      </Stack>
      
 //    );
 //  }
 
 
- import React from 'react'
- const Rating = ({value, text}) => {
+//  import React from 'react'
+ function Rating(props)  {
+  const { rating, numReviews} = props;
    return (
      <div className='rating'>
-         <span style={{ color: "yellow" }}>
-         <i className={
-             value >=1
+         <span>
+         <i
+          className={
+             rating >=1
              ? 'fas fa-star'
-           : value >= 0.5
+           : rating >= 0.5
            ?"fas fa-star-halt-alt"
            :"fas fa-start"
      }
-     ></i>
+     />
      </span>
+     <span>
      <i className={
-         value >= 2
+         rating >= 2
          ? "fas fa-star"
-         :value >= 1.5
+         :rating >= 1.5
          ?"fas fa-star-halt-alt"
          :"fas-fa-start"
      }
-     ></i>
-     <span style={{ color: "yellow" }}>
-     <i className={
-         value >= 3
+     />
+     </span>
+     <span>
+     <i
+      className={
+         rating >= 3
          ? "fas fa-star"
-         :value >= 2.5
+         :rating >= 2.5
          ?"fas fa-star-halt-alt"
          :"fas-fa-start"
      }
-     ></i>
+     />
      </span>
-     <span style={{ color: "yellow" }}>
+     <span>
      <i className={
-         value >= 4
+         rating >= 4
          ? "fas fa-star"
-         :value >= 3.5
+         :rating >= 3.5
          ?"fas fa-star-halt-alt"
          :"fas-fa-start"
      }
-     ></i>
+     />
      </span>
-     <span style={{ color: "yellow" }}>
-     <i className={
-         value >= 5
+     <span>
+     <i
+      className={
+         rating >= 5
          ? "fas fa-star"
-         :value >= 4.5
+         :rating >= 4.5
          ?"fas fa-star-halt-alt"
          :"fas-fa-start"
      }
-     ></i>
+     />
      </span>
-     <span>{text && text}</span>
+     <span>{numReviews}</span>
      </div>
    );
  }

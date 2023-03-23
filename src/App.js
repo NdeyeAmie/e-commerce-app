@@ -9,14 +9,12 @@ import Header from '../src/components/Header.jsx'
 import Footer from './components/Footer';
 import Annoncement from './components/Annoncement';
 import Contact from './components/Contact';
-import Login from './components/buttons/Login';
-import Signup from './components/buttons/Signup';
+// import Login from './components/buttons/Login';
+// import Signup from './components/buttons/Signup';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import UserProfil from './components/UserProfil';
 import Payment from './components/Payment';
-import OrderList from "./components/admin/OrderList"
-import AdminRoute from './components/AdminRoute';
 import Rapp from './components/adminUsers/Rapp';
 import UpdateProduct from './components/admin/UpdateProduct';
 
@@ -53,8 +51,8 @@ function App() {
      <Route path='/contact' element={<Contact/>} />
      <Route path='/about' element={<About/>} />
      {/* <Route path='/admin' element={<AdminNavbar/>} /> */}
-     <Route path='/login' element={<Login/>} />
-     <Route path='/signup' element={<Signup/>} />
+     {/* <Route path='/login' element={<Login/>} /> */}
+     {/* <Route path='/signup' element={<Signup/>} /> */}
      <Route path='/profil' element={<UserProfil/>} />
      <Route path='/payment' element={<Payment/>} />
 
