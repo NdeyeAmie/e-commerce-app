@@ -1,5 +1,5 @@
 {
-  "proxy": "http://localhost:5000",
+  "proxy": "https://e-commerce-gp18.onrender.com",
   "name": "e-commerce",
   "version": "0.1.0",
   "private": true,

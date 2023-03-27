@@ -71,7 +71,8 @@
 //  export default ProductDetail
 
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
+import { axiosInstance } from "../contants/axios";
 import { useState, useEffect } from "react";
 import { NavLink, useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -94,18 +95,30 @@ const ProductDetail = () => {
   //console.log(thisProduct);
   useEffect(() => {
     const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${id}`);
+      const { data } = await axiosInstance.get(`/api/products/${id}`);
       setProduct(data);
     };
     fetchProduct();
   }, [id]);
+
+const handleDecrement = () => {
+  if(qty > 1){
+  setQty(prevCount => prevCount -1);
+  }
+}
+
+const handleIncrement = () => {
+  if(qty < 10){
+  setQty(prevCount => prevCount +1);
+  }
+}
 
   const dispatch = useDispatch();
   const { loading, error } = thisProduct;
 
   const handleCart = (thisProduct) => {
     if (cartBtn === "Add to Cart") {
-      dispatch(addItem(thisProduct, qty));
+      dispatch(addItem(thisProduct, thisProduct.qty));
       navigate(`/cart/${thisProduct}?qty=${qty} `);
       // setCartBtn("Remove from Cart");
     } else {
@@ -151,7 +164,7 @@ const ProductDetail = () => {
                       )}
                     </div>
                     <hr />
-                    <div className="flex-box d-flex justify-content-between align-items-">
+                    <div className="flex-box d-flex justify-content-between align-items-center">
                       <h6>Reviews</h6>
                       <Rating
                         rating={thisProduct.rating}
@@ -159,7 +172,7 @@ const ProductDetail = () => {
                       />
                     </div>
                     <hr />
-                    {thisProduct.countInStock > 0 && (
+                    {/* {thisProduct.countInStock > 0 && (
                       <>
                         <div className="flex-box d-flex justify-content-between align-items-center">
                           <h6>Quantity</h6>
@@ -178,9 +191,17 @@ const ProductDetail = () => {
                           </select>
                         </div>
                         <hr />
-                      </>
-                    )}
+                     
+                    )} */}
+                    <div className="flex-box d-flex justify-content-between align-items-center">
+                      <div className="input-group">
+                        <button type="button" onClick={handleDecrement} className="input-group-text">-</button>
+                        <div type="text" className="form-control text-center">{qty}</div>
+                        <button type="button" onClick={handleIncrement} className="input-group-text">+</button>
+                      </div>
+                    </div>
                   </div>
+                  <hr/>
                   <NavLink to="#">
                     <button
                       className="btn btn-outline col-12  border-0 p-3 "

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { axiosInstance } from "../../contants/axios";
 import { useSelector } from "react-redux";
 import React, { useContext, useEffect, useReducer } from 'react';
 import { toast } from 'react-toastify';
@@ -55,7 +55,7 @@ const { userInfo} = userLogin;
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/orders`, {
+        const { data } = await axiosInstance.get(`/api/orders`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
@@ -77,7 +77,7 @@ const { userInfo} = userLogin;
     if (window.confirm('Are you sure to delete?')) {
       try {
         dispatch({ type: 'DELETE_REQUEST' });
-        await axios.delete(`/api/orders/${order._id}`, {
+        await axiosInstance.delete(`/api/orders/${order._id}`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         toast.success('order deleted successfully');

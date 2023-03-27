@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axiosInstance } from "../../contants/axios";
 import { PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS } from "../../contants/productContants";
 
 export const productAdd = (title,img, desc, price, countInStock, rating, numReviews) =>
@@ -7,7 +7,7 @@ export const productAdd = (title,img, desc, price, countInStock, rating, numRevi
     try {
       dispatch({ type: PRODUCT_DETAILS_REQUEST });
       //const config = { headers: { "content-Type": "application/json" } };
-      const { data } = await axios.post( "/api/products/post",
+      const { data } = await axiosInstance.post( "/api/products/post",
         { title,img, desc, price, countInStock, rating, numReviews },
         //config
       );

@@ -1,5 +1,5 @@
  import React, {useState, useEffect} from 'react'
- import axios from "axios"
+ import { axiosInstance } from '../contants/axios';
  import { NavLink } from 'react-router-dom';
 import Header from "./Header"
 import Rating from './Rating';
@@ -9,7 +9,7 @@ import Rating from './Rating';
     const [products, setProducts] = useState([]);
     useEffect(() =>{
       const fetchProducts = async () =>{
-        const {data} = await axios.get("/api/products");
+        const {data} = await axiosInstance.get("/api/products");
         setProducts(data)
       }
       fetchProducts();

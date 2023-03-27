@@ -1,6 +1,6 @@
  import React, { useEffect, useReducer } from "react";
  import { useSelector } from "react-redux";
- import axios from "axios";
+ import { axiosInstance } from "../../contants/axios";
  import Message from "../Message";
  import Loading from "../Loading";
  import Row from "react-bootstrap/Row";
@@ -34,7 +34,7 @@
    useEffect(() => {
      const fetchData = async () => {
        try {
-         const { data } = await axios.get("/api/orders/summary", {
+         const { data } = await axiosInstance.get("/api/orders/summary", {
            headers: { Authorization: `Bearer ${userInfo.token}` },
          });
          dispatch({ type: "FETCH_SUCCESS", payload: data });

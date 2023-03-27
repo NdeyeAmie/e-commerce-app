@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 // import { Store } from '../Store';
 import { toast } from 'react-toastify';
 import Message from '../Message';
-import axios from 'axios';
+import { axiosInstance } from '../../contants/axios';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -40,7 +40,7 @@ const { userInfo} = userLogin;
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put(
+      const { data } = await axiosInstance.put(
         '/api/users/profile',
         {
           name,
