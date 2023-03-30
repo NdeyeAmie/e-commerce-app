@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -26,20 +27,20 @@ const ProfilTabs = () => {
   const getUserDetails = async () => {
     console.warn(params);
     let result = await fetch(
-      `http://localhost:5000/api/users/profile/${params.id}`
+      `/api/users/profile/${params.id}`
     );
     result = await result.json();
     // console.warn(result);
-    setUsername(result.title);
-    setEmail(result.desc);
-    setPassword(result.price);
-    setConfirmPassword(result.countInStock);
+    setUsername(result.username);
+    setEmail(result.email);
+    setPassword(result.password);
+    setConfirmPassword(result.confirmPassword);
   };
 
   const updateUser = async () => {
     console.warn(username, email, password, confirmPassword);
     let result = await fetch(
-      `http://localhost:5000/api/users/profile${params.id}`,
+      `/api/users/profile${params.id}`,
       {
         method: "Put",
         body: JSON.stringify({ username, email, password, confirmPassword }),
@@ -55,10 +56,11 @@ const ProfilTabs = () => {
   };
 
   return (
-    <>
+    <div className="my-5 py-5">
       <Toast />
+      
       <form className="row form-container" onSubmit={updateUser}>
-        <div className="col-md-6 w-2 mt-3">
+        <div className="col-md-6 w-2 mt-3 ">
           <div className="form">
             <label for="account-fn">Username</label>
             <input
@@ -102,12 +104,13 @@ const ProfilTabs = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
-        </div>
-        <button type="submit" className="bnt w-2 mt-3">
+        
+        <button type="submit" className="btn btn-outline  w-2 mt-3">
           Update Profile
         </button>
+        </div>
       </form>
-    </>
+    </div>
   );
 };
 

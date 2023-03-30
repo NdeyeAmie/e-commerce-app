@@ -9,7 +9,7 @@ import CheckoutStep from "./CheckoutStep";
 const Checkout = () => {
   const state = useSelector((state) => state.addItem);
 
-  const [username, setUsername] = useState("shippingAddress.usename");
+  const [username, setUsername] = useState("");
   const [number, setNumber] = useState("");
   const [address, setAddress] = useState("");
   const [region, setRegion] = useState("");
@@ -87,7 +87,7 @@ const Checkout = () => {
                     placeholder="Entrez voter nom"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    required
+                    required="tue"
                   />
                 </div>
 
@@ -104,6 +104,7 @@ const Checkout = () => {
                       value={number}
                       onChange={(e) => setNumber(e.target.value)}
                       placeholder="+221..."
+                      required="true"
                     />
                   </div>
                   <label htmlFor="address" className="form-label">
@@ -116,7 +117,7 @@ const Checkout = () => {
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     placeholder=""
-                    required=""
+                    required="true"
                   />
                   <div className="invalid-feedback">
                     Veuillez indiquer votre addresse de livraison.
@@ -131,7 +132,7 @@ const Checkout = () => {
                     value={region}
                     onChange={(e) => setRegion(e.target.value)}
                     placeholder="Entrez votre region"
-                    required=""
+                    required="true"
                   />
                   <div className="invalid-feedback">
                     Veuillez indiquer votre Region de livraison.
@@ -146,7 +147,7 @@ const Checkout = () => {
                     value={ville}
                     onChange={(e) => setVille(e.target.value)}
                     placeholder="Entrez votre ville"
-                    required=""
+                    required="true"
                   />
                   <div className="invalid-feedback">
                     Veuillez indiquer votre vile de livraison.

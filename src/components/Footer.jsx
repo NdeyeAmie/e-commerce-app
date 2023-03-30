@@ -4,7 +4,8 @@ import Newsletter from "./Newsletter";
 
 const Container = styled.div`
 display: flex;
-background-color:pink;
+background-color: black;
+color: white;
 `;
 const Left = styled.div`
  flex: 1;
@@ -75,7 +76,7 @@ const Footer = () => {
   return (
     <>
     <Newsletter/>
-    <Container>
+    <Container className="dark">
       <Left>
     <Logo><img src="assets/logo.png" alt="logo"/></Logo>
     <Desc>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt facilis iure ipsum sit blanditiis necessitatibus impedit sunt expedita sed provident nulla,
@@ -99,16 +100,16 @@ const Footer = () => {
       <Center>
         <Title>Lien</Title>
         <List>
-            <ListItem>Homme</ListItem>
-            <ListItem>Cart</ListItem>
-            <ListItem>Man Fashion</ListItem>
+            <ListItem>Femme</ListItem>
+            <ListItem>Hidjab</ListItem>
+            <ListItem>Chaussures</ListItem>
             <ListItem>Woman Fashion</ListItem>
-            <ListItem>Accessoires</ListItem>
-            <ListItem>My Account</ListItem>
-            <ListItem>Order Tracking</ListItem>
-            <ListItem>Wishlist</ListItem>
-            <ListItem>Wishlist</ListItem>
-            <ListItem>Terms</ListItem>
+            <ListItem>Accessoires hidjab</ListItem>
+            <ListItem>My Sac</ListItem>
+            <ListItem>Abaya</ListItem>
+            <ListItem>Ensemblet</ListItem>
+            <ListItem>Dilbab</ListItem>
+            <ListItem>Colle</ListItem>
         </List>
       </Center>
       <Right>

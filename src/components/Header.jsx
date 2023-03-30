@@ -222,8 +222,6 @@
 
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Login from "./buttons/Login";
-import Signup from "./buttons/Signup";
 import CartBtn from "./buttons/CartBtn";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { useDispatch, useSelector } from "react-redux";
@@ -238,7 +236,7 @@ const Header = () => {
     dispatch(logout());
   };
   return (
-    <div>
+    <div className="div-fixed">
       {/* bg-light */}
       <nav className="navbar navbar-expand-lg bg-light" >
         <div className="container-fluid">
@@ -310,7 +308,9 @@ const Header = () => {
               </NavDropdown.Item>
             </NavDropdown>
           ) : (
-            <Login />
+            <NavLink to="/login" className="btn btn-outline-danger ms-2">
+        <span className='fa fa-sign-in me-1'></span>  Login
+      </NavLink>
           )}
           {userInfo && userInfo.isAdmin && (
             <NavDropdown title="Admin" id="admin-nav-dropdown">
@@ -334,7 +334,9 @@ const Header = () => {
               </NavLink>
             </NavDropdown>
           )}
-          <Signup />
+          <NavLink to="/signup" className="btn btn-outline-danger ms-2">
+        <span className='fa fa-user-plus me-1'></span>  Signup
+      </NavLink>
           <CartBtn />
         </div>
       </nav>

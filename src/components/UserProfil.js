@@ -29,14 +29,14 @@ useEffect(() =>{
                     <div className='author-card-profile row'>
                     <div className='author-card-avatar col-md-5'>
                     {/* <img src="assets/hidjab2.png" alt="image2" className="widgetSmImg" /> */}
-                        <img src="assets/logo.png" style={{height:"46"}} alt="hi"/>
+                        {/* <img src="assets/logo.png" style={{height:"46"}} alt="hi"/> */}
                     </div>
                     <div className='author-card-details col-md-7'>
                         <h5 className='author-card-name mb-2'>
                             <strong>{userInfo.username}</strong>
                         </h5>
                         <span className='author-card-position'>
-                            <>Joined {moment(userInfo.createdAt).format("LL")}</>
+                            <> {moment(userInfo.createdAt).format("LL")}</>
                         </span>
                         </div>
                     </div>

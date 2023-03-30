@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom'
 
 const About = () => {
   return (
-    <div>
       
       <div className='container py-5 my-5'>
         <div className='row'>
@@ -24,12 +23,11 @@ const About = () => {
             btn-outline-secondary px-3">contactez-nous</NavLink>
           </div>
           <div className='col-md-6 d-flex justify-content-center'>
-          <img src='#' alt='About us'
+          <img src='assets/logo.png' alt='About us'
           height= "400px" width= "400px"/>
           </div>
         </div>
       </div>
-    </div>
   )
 }
 

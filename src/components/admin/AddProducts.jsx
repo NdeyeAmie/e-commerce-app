@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from '../Loading';
 import Message from '../Message';
 import Dashboard from "./Dashboard";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { NavLink } from "react-router-dom";
 import { productAdd } from "../../redux/actions/productAction";
 
@@ -20,6 +21,7 @@ const AddProducts = () => {
 
   const dispatch = useDispatch();
   const productadd = useSelector((state) => state.productadd);
+  // eslint-disable-next-line no-unused-vars
   const {error, loading,productInfo} = productadd;
 
   const addProduct = (e) => {
@@ -33,7 +35,7 @@ const AddProducts = () => {
   //toast.success("product successfully added!");
 
   return (
-    <>
+    <div className="my-5 py-5">
     <Dashboard/>
       <div className="container" p-5>
         <h4 className="mb-5">Add Product</h4>
@@ -123,14 +125,14 @@ const AddProducts = () => {
               required
             />
           </div>
-           {/* <NavLink to="/dashboard/all-products">  */}
+           <NavLink to="/dashboard/all-products"> 
           <button className="btn btn-outline" type="submit">
             Add product
           </button>
-           {/* </NavLink>  */}
+           </NavLink> 
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

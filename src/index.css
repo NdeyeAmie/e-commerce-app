@@ -24,13 +24,15 @@ code {
 
 .btn {
   color: white;
-  background-color: pink;
+  /* background-color: pink; */
+  background-color: #E6425E;
 }
 
  /*Annoncement*/
  .annoncement {
   height: 60px;
-background-color: pink;
+/* background-color: pink; */
+background-color: #E6425E;
 color: black;
 display: flex;
 align-items: center;
@@ -41,7 +43,7 @@ font-weight: 50px;
 marquee{
   position: fixed;
   z-index: 10;
-  background-color: pink;
+background-color: #E6425E;
   height: 60px;
 }
  /* Home */
@@ -56,7 +58,7 @@ marquee{
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 .btn {
- background-color: pink; 
+ background-color: #E6425E; 
 }
 
 /* product */
@@ -90,10 +92,10 @@ padding: 20px 0px;
   padding: 20px;
 }
 .btn-close{
-  background-color: pink;
+  background-color: #E6425E;
 }
 .badge{
-  background-color: pink;
+  background-color: #E6425E;
   color: pink;
 }
 
@@ -352,4 +354,73 @@ width: 40%;
 
 .product-list ul{
   margin: 0px;
+}
+
+.div-fixed{
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+}
+
+/* login*/
+.App {
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-image: linear-gradient(79deg, #E6425E, #C66FBC 48%, #F7944D);
+  font-size: 20px;
+}
+
+.auth-form-container, .login-form, .register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 600px) {
+  .auth-form-container {
+    padding: 5rem;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 0.5rem;
+  }
+}
+
+label {
+  text-align: left;
+  padding: 0.25rem 0;
+}
+
+input {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  /* border: none; */
+  border-radius: 10px;
+}
+
+button {
+  border: none;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #7439db;
+}
+
+.link-btn {
+  background: none;
+  color: white;
+  text-decoration: underline;
+}
+
+.btn-outline {
+  background-color: #E6425E;
+}
+
+.margin{
+  color: #eddee2;
+  list-style: none;
+  font-size: 20px;
 }

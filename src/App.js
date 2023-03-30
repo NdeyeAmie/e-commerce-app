@@ -26,6 +26,8 @@ import AllProducts from './components/admin/AllProducts';
 import Dashboard from './components/admin/Dashboard';
 import Layout from './components/admin/Layout';
 import Profiluser from './components/admin/Profiluser';
+import Login from './components/buttons/Login';
+import Signup from './components/buttons/Signup';
 
 // import Sidebar from './components/buttons/Sidebar';
 // import Pagehome from './components/admin/Pagehome';
@@ -51,8 +53,8 @@ function App() {
      <Route path='/contact' element={<Contact/>} />
      <Route path='/about' element={<About/>} />
      {/* <Route path='/admin' element={<AdminNavbar/>} /> */}
-     {/* <Route path='/login' element={<Login/>} /> */}
-     {/* <Route path='/signup' element={<Signup/>} /> */}
+     <Route path='/login' element={<Login/>} />
+     <Route path='/signup' element={<Signup/>} />
      <Route path='/profil' element={<UserProfil/>} />
      <Route path='/payment' element={<Payment/>} />
 
